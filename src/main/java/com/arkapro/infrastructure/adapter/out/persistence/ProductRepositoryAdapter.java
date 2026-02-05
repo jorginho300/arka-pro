@@ -1,5 +1,7 @@
 package com.arkapro.infrastructure.adapter.out.persistence;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.arkapro.domain.model.Product;
@@ -25,6 +27,14 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort {
 		ProductJpaEntity entity = mapper.toEntity(product);
 		ProductJpaEntity saved = repository.save(entity);
 		return mapper.toDomain(saved);
+	}
+
+
+	@Override
+	public Optional<Product> findById(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id)
+				.map(mapper::toDomain);
 	}
 
 }
