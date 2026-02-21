@@ -3,8 +3,8 @@ package com.arkapro.ports.in;
 import com.arkapro.domain.model.Category;
 import com.arkapro.domain.model.Product;
 import com.arkapro.infrastructure.adapter.in.dto.request.CreateProductCommandRequest;
-import com.arkapro.ports.CategoryRepositoryPort;
-import com.arkapro.ports.ProductRepositoryPort;
+import com.arkapro.ports.repository.CategoryRepositoryPort;
+import com.arkapro.ports.repository.ProductRepositoryPort;
 
 public class CreateProductUseCase {
 	private final ProductRepositoryPort productRepository;

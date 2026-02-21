@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.arkapro.domain.model.Category;
 import com.arkapro.infrastructure.adapter.out.mapper.CategoryMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.CategoryJpaRepository;
-import com.arkapro.ports.CategoryRepositoryPort;
+import com.arkapro.ports.repository.CategoryRepositoryPort;
 
 @Component
 public class CategoryRepositoryAdapter implements CategoryRepositoryPort {

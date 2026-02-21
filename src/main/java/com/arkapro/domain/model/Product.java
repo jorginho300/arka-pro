@@ -112,9 +112,12 @@ public class Product {
 		}
 	}
 	
-	public void freeReservedStock(Integer quantity) {
-		checkQuantity(quantity);
-		this.reservedStock = Math.max(0, this.reservedStock - quantity);
+	public void freeReservations(Integer quantity) {
+		if(reservedStock < quantity) {
+			throw new IllegalStateException("Reserved stock inconsistency");
+		} else {
+			this.reservedStock -= quantity;
+		}
 	}
 	
 	public void confirmReservation(Integer quantity) {
@@ -129,7 +132,7 @@ public class Product {
 		}
 	}
 	
-	public void increaseOrRestoreStock(Integer quantity) {
+	public void increaseStock(Integer quantity) {
 		checkQuantity(quantity);
 		this.stock += quantity;
 	}

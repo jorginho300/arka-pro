@@ -8,7 +8,7 @@ import com.arkapro.domain.model.StockManagement;
 import com.arkapro.infrastructure.adapter.out.mapper.StockManagementMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.entity.StockManagementJpaEntity;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.StockManagementJpaRepository;
-import com.arkapro.ports.StockManagementRepositoryPort;
+import com.arkapro.ports.repository.StockManagementRepositoryPort;
 
 @Component
 public class StockManagementRepositoryAdapter implements StockManagementRepositoryPort {

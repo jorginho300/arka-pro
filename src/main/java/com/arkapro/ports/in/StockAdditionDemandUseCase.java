@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.arkapro.domain.model.StockManagement;
 import com.arkapro.domain.model.StockManagementEnum;
-import com.arkapro.ports.StockManagementRepositoryPort;
+import com.arkapro.ports.repository.StockManagementRepositoryPort;
 
 public class StockAdditionDemandUseCase {
 	private final StockManagementRepositoryPort stockManagementRepository;

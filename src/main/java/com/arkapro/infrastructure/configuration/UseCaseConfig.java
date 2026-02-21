@@ -2,12 +2,18 @@ package com.arkapro.infrastructure.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.arkapro.ports.CategoryRepositoryPort;
-import com.arkapro.ports.ProductRepositoryPort;
-import com.arkapro.ports.StockManagementRepositoryPort;
+
+import com.arkapro.ports.in.ConfirmPurchaseOrderUseCase;
 import com.arkapro.ports.in.CreateProductUseCase;
+import com.arkapro.ports.in.CreatePurchaseOrderUseCase;
+import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
 import com.arkapro.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.ports.in.StockAdditionDemandUseCase;
+import com.arkapro.ports.repository.CategoryRepositoryPort;
+import com.arkapro.ports.repository.CustomerRepositoryPort;
+import com.arkapro.ports.repository.ProductRepositoryPort;
+import com.arkapro.ports.repository.PurchaseOrderRepositoryPort;
+import com.arkapro.ports.repository.StockManagementRepositoryPort;
 
 @Configuration
 public class UseCaseConfig {
@@ -26,6 +32,26 @@ public class UseCaseConfig {
 	@Bean
 	public StockAdditionDemandUseCase stockDemandUseCase(StockManagementRepositoryPort stockRepository) {
 		return new StockAdditionDemandUseCase(stockRepository);
+	}
+	
+	@Bean
+	public ConfirmPurchaseOrderUseCase confirmPurchaseOrderUseCase
+	(PurchaseOrderRepositoryPort purchaseOrderRepository, ProductRepositoryPort productRepository) {
+		return new ConfirmPurchaseOrderUseCase(purchaseOrderRepository, productRepository);
+	}
+	
+	@Bean
+	public CreatePurchaseOrderUseCase createPurchaseOrderUseCase
+	(PurchaseOrderRepositoryPort purchaseOrderRepository, 
+			CustomerRepositoryPort customerRepository, 
+			ProductRepositoryPort productRepository) {
+		return new CreatePurchaseOrderUseCase(purchaseOrderRepository, customerRepository, productRepository);
+	}
+	
+	@Bean
+	public DesertPurchaseOrderUseCase desertPurchaseOrderUseCase
+	(PurchaseOrderRepositoryPort orderRepository, ProductRepositoryPort productRepository) {
+		return new DesertPurchaseOrderUseCase(orderRepository, productRepository);
 	}
 
 }

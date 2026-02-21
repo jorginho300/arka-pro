@@ -1,10 +1,14 @@
-package com.arkapro.infrastructure.adapter.in.dto.request;
+package com.arkapro.domain.events;
 
-public class AddStockCommandRequest {
+public class ProductPurchaseOrderEvent {
 	private Long productId;
 	private Integer quantity;
 	
-	public AddStockCommandRequest(Long productId, Integer quantity) {
+	public ProductPurchaseOrderEvent() {
+		
+	}
+
+	public ProductPurchaseOrderEvent(Long productId, Integer quantity) {
 		this.productId = productId;
 		this.quantity = quantity;
 	}

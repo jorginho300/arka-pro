@@ -28,12 +28,7 @@ public class ProductJpaEntity {
 	private Integer stock;
 	@Column(name = "reserved_stock", nullable = false)
 	private Integer reservedStock;
-	public Integer getReservedStock() {
-		return reservedStock;
-	}
-	public void setReservedStock(Integer reservedStock) {
-		this.reservedStock = reservedStock;
-	}
+
 	@ManyToOne
 	@JoinColumn(name = "fk_id_category", nullable = false)
 	private CategoryJpaEntity category;
@@ -74,5 +69,10 @@ public class ProductJpaEntity {
 		this.category = category;
 	}
 	
-	
+	public Integer getReservedStock() {
+		return reservedStock;
+	}
+	public void setReservedStock(Integer reservedStock) {
+		this.reservedStock = reservedStock;
+	}
 }

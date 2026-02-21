@@ -3,8 +3,8 @@ package com.arkapro.ports.in;
 import com.arkapro.domain.model.Product;
 import com.arkapro.domain.model.StockManagement;
 import com.arkapro.domain.model.StockManagementEnum;
-import com.arkapro.ports.ProductRepositoryPort;
-import com.arkapro.ports.StockManagementRepositoryPort;
+import com.arkapro.ports.repository.ProductRepositoryPort;
+import com.arkapro.ports.repository.StockManagementRepositoryPort;
 
 public class StockAdditionConfirmationUseCase {
 	private final ProductRepositoryPort productRepository;
@@ -23,7 +23,7 @@ public class StockAdditionConfirmationUseCase {
 				.orElseThrow(() -> new RuntimeException("Product not found"));
 		
 		sm.setStatus(StockManagementEnum.APPROVED);
-		product.increaseOrRestoreStock(sm.getQuantity());
+		product.increaseStock(sm.getQuantity());
 		productRepository.save(product);
 		stockRepository.save(sm);
 	}

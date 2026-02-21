@@ -1,4 +1,4 @@
-package com.arkapro.ports;
+package com.arkapro.ports.repository;
 
 import java.util.Optional;
 
