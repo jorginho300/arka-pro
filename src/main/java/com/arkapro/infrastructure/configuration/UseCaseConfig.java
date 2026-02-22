@@ -9,6 +9,7 @@ import com.arkapro.ports.in.CreatePurchaseOrderUseCase;
 import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
 import com.arkapro.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.ports.in.StockAdditionDemandUseCase;
+import com.arkapro.ports.in.UpdatePurchaseOrderUseCase;
 import com.arkapro.ports.repository.CategoryRepositoryPort;
 import com.arkapro.ports.repository.CustomerRepositoryPort;
 import com.arkapro.ports.repository.ProductRepositoryPort;
@@ -52,6 +53,12 @@ public class UseCaseConfig {
 	public DesertPurchaseOrderUseCase desertPurchaseOrderUseCase
 	(PurchaseOrderRepositoryPort orderRepository, ProductRepositoryPort productRepository) {
 		return new DesertPurchaseOrderUseCase(orderRepository, productRepository);
+	}
+	
+	@Bean
+	public UpdatePurchaseOrderUseCase updatePurchaseOrderUseCase
+	(PurchaseOrderRepositoryPort purchaseOrderRepository, ProductRepositoryPort productRepository) {
+		return new UpdatePurchaseOrderUseCase(purchaseOrderRepository, productRepository);
 	}
 
 }

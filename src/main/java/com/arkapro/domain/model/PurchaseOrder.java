@@ -98,6 +98,19 @@ public class PurchaseOrder {
 
 	}
 	
+	public PurchaseOrderDetail removeDetail(Long productId) {
+		if(status != PurchaseOrderStatusEnum.PENDING) {
+			throw new IllegalStateException("Cannot modify an order that is not in a pending status");
+		} else {
+			PurchaseOrderDetail detail = details.stream()
+					.filter(d -> d.getProductId().equals(productId))
+					.findFirst()
+					.orElseThrow(() -> new IllegalArgumentException("Id product not found in this order"));
+			this.details.remove(detail);
+			return detail;
+		}
+	}
+	
 	public void confirmPurchaseOrder() {
 		if(details.isEmpty()) {
 			throw new IllegalStateException("Purchase order without products");
