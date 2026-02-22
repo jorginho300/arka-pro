@@ -111,6 +111,14 @@ public class PurchaseOrder {
 		}
 	}
 	
+	public void clearDetails() {
+		if(status != PurchaseOrderStatusEnum.PENDING) {
+			throw new IllegalStateException("Cannot modify an order that is not in a pending status");
+		} else {
+			this.details.clear();
+		}
+	}
+	
 	public void confirmPurchaseOrder() {
 		if(details.isEmpty()) {
 			throw new IllegalStateException("Purchase order without products");

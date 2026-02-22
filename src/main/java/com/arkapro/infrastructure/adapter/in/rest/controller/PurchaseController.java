@@ -3,6 +3,7 @@ package com.arkapro.infrastructure.adapter.in.rest.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.arkapro.infrastructure.adapter.in.dto.request.CreatePurchaseOrderComm
 import com.arkapro.infrastructure.adapter.in.dto.request.OrderItemsCommandRequest;
 import com.arkapro.infrastructure.adapter.in.dto.response.PurchaseOrderResponse;
 import com.arkapro.infrastructure.adapter.out.assembler.PurchaseOrderResponseAssembler;
+import com.arkapro.ports.in.AddItemsPurchaseOrderUseCase;
 import com.arkapro.ports.in.ConfirmPurchaseOrderUseCase;
 import com.arkapro.ports.in.CreatePurchaseOrderUseCase;
 import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
@@ -27,6 +29,7 @@ public class PurchaseController {
 	private final CreatePurchaseOrderUseCase purchaseOrderCreationUC;
 	private final DesertPurchaseOrderUseCase desertOrdersUC;
 	private final RemoveItemsPurchaseOrderUseCase removeItemsUC;
+	private final AddItemsPurchaseOrderUseCase addItemsUC;
 	private final PurchaseOrderResponseAssembler responseAssembler;
 	
 	public PurchaseController 
@@ -34,11 +37,13 @@ public class PurchaseController {
 			CreatePurchaseOrderUseCase purchaseOrderCreationUC,
 			PurchaseOrderResponseAssembler responseAssembler,
 			DesertPurchaseOrderUseCase desertOrdersUC,
-			RemoveItemsPurchaseOrderUseCase removeItemsUC) {
+			RemoveItemsPurchaseOrderUseCase removeItemsUC,
+			AddItemsPurchaseOrderUseCase addItemsUC) {
 		this.purchaseOrderConfirmationUC = purchaseOrderConfirmationUC;
 		this.purchaseOrderCreationUC = purchaseOrderCreationUC;
 		this.desertOrdersUC = desertOrdersUC;
 		this.removeItemsUC = removeItemsUC;
+		this.addItemsUC = addItemsUC;
 		this.responseAssembler = responseAssembler;
 	}
 	
@@ -47,6 +52,15 @@ public class PurchaseController {
 	(@PathVariable Long customerId, @RequestBody List<OrderItemsCommandRequest> orderItems) {
 		CreatePurchaseOrderCommandRequest request = new CreatePurchaseOrderCommandRequest(customerId, orderItems);
 		PurchaseOrder order = purchaseOrderCreationUC.execute(request);
+		PurchaseOrderResponse response = responseAssembler.assemble(order);
+		return ResponseEntity.ok(response);
+	}
+	
+	@PatchMapping("{id}/edit")
+	public ResponseEntity<PurchaseOrderResponse> editToAddItems
+	(@PathVariable Long id, @RequestBody List<OrderItemsCommandRequest> orderItems) {
+		CreatePurchaseOrderCommandRequest request = new CreatePurchaseOrderCommandRequest(orderItems);
+		PurchaseOrder order = addItemsUC.execute(id, request);
 		PurchaseOrderResponse response = responseAssembler.assemble(order);
 		return ResponseEntity.ok(response);
 	}

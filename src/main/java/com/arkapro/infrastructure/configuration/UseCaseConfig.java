@@ -3,13 +3,14 @@ package com.arkapro.infrastructure.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.arkapro.ports.in.AddItemsPurchaseOrderUseCase;
 import com.arkapro.ports.in.ConfirmPurchaseOrderUseCase;
 import com.arkapro.ports.in.CreateProductUseCase;
 import com.arkapro.ports.in.CreatePurchaseOrderUseCase;
 import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
+import com.arkapro.ports.in.RemoveItemsPurchaseOrderUseCase;
 import com.arkapro.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.ports.in.StockAdditionDemandUseCase;
-import com.arkapro.ports.in.UpdatePurchaseOrderUseCase;
 import com.arkapro.ports.repository.CategoryRepositoryPort;
 import com.arkapro.ports.repository.CustomerRepositoryPort;
 import com.arkapro.ports.repository.ProductRepositoryPort;
@@ -56,9 +57,15 @@ public class UseCaseConfig {
 	}
 	
 	@Bean
-	public UpdatePurchaseOrderUseCase updatePurchaseOrderUseCase
+	public AddItemsPurchaseOrderUseCase addItemsPurchaseOrderUseCase
 	(PurchaseOrderRepositoryPort purchaseOrderRepository, ProductRepositoryPort productRepository) {
-		return new UpdatePurchaseOrderUseCase(purchaseOrderRepository, productRepository);
+		return new AddItemsPurchaseOrderUseCase(purchaseOrderRepository, productRepository);
+	}
+	
+	@Bean
+	public RemoveItemsPurchaseOrderUseCase removeItemsPurchaseOrderUseCase
+	(PurchaseOrderRepositoryPort purchaseOrderRepository, ProductRepositoryPort productRepository) {
+		return new RemoveItemsPurchaseOrderUseCase(purchaseOrderRepository, productRepository);
 	}
 
 }

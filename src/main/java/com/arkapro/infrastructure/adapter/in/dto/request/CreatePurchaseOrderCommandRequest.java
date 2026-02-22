@@ -9,6 +9,10 @@ public class CreatePurchaseOrderCommandRequest {
 	public CreatePurchaseOrderCommandRequest() {
 		
 	}
+	
+	public CreatePurchaseOrderCommandRequest(List<OrderItemsCommandRequest> items) {
+		this.items = items;
+	}
 
 	public CreatePurchaseOrderCommandRequest(Long customerId, List<OrderItemsCommandRequest> items) {
 		this.customerId = customerId;
