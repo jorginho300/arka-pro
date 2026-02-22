@@ -3,19 +3,21 @@ package com.arkapro.infrastructure.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.arkapro.ports.in.AddItemsPurchaseOrderUseCase;
-import com.arkapro.ports.in.ConfirmPurchaseOrderUseCase;
-import com.arkapro.ports.in.CreateProductUseCase;
-import com.arkapro.ports.in.CreatePurchaseOrderUseCase;
-import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
-import com.arkapro.ports.in.RemoveItemsPurchaseOrderUseCase;
-import com.arkapro.ports.in.StockAdditionConfirmationUseCase;
-import com.arkapro.ports.in.StockAdditionDemandUseCase;
-import com.arkapro.ports.repository.CategoryRepositoryPort;
-import com.arkapro.ports.repository.CustomerRepositoryPort;
-import com.arkapro.ports.repository.ProductRepositoryPort;
-import com.arkapro.ports.repository.PurchaseOrderRepositoryPort;
-import com.arkapro.ports.repository.StockManagementRepositoryPort;
+import com.arkapro.core.ports.in.AddItemsPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.ConfirmPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.CreateProductUseCase;
+import com.arkapro.core.ports.in.CreatePurchaseOrderUseCase;
+import com.arkapro.core.ports.in.DesertPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.GenerateLowStockReportUseCase;
+import com.arkapro.core.ports.in.RemoveItemsPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.StockAdditionConfirmationUseCase;
+import com.arkapro.core.ports.in.StockAdditionDemandUseCase;
+import com.arkapro.core.ports.query.ReportQueryPort;
+import com.arkapro.core.ports.repository.CategoryRepositoryPort;
+import com.arkapro.core.ports.repository.CustomerRepositoryPort;
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
+import com.arkapro.core.ports.repository.PurchaseOrderRepositoryPort;
+import com.arkapro.core.ports.repository.StockManagementRepositoryPort;
 
 @Configuration
 public class UseCaseConfig {
@@ -66,6 +68,11 @@ public class UseCaseConfig {
 	public RemoveItemsPurchaseOrderUseCase removeItemsPurchaseOrderUseCase
 	(PurchaseOrderRepositoryPort purchaseOrderRepository, ProductRepositoryPort productRepository) {
 		return new RemoveItemsPurchaseOrderUseCase(purchaseOrderRepository, productRepository);
+	}
+	
+	@Bean
+	public GenerateLowStockReportUseCase generateLowStockReportUseCase(ReportQueryPort reportQuery) {
+		return new GenerateLowStockReportUseCase(reportQuery);
 	}
 
 }

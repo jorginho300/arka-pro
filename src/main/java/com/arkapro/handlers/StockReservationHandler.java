@@ -3,9 +3,9 @@ package com.arkapro.handlers;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
 import com.arkapro.domain.events.ConfirmedPurchaseOrderEvent;
 import com.arkapro.domain.model.Product;
-import com.arkapro.ports.repository.ProductRepositoryPort;
 
 @Component
 public class StockReservationHandler {

@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.arkapro.ports.in.StockAdditionConfirmationUseCase;
-import com.arkapro.ports.in.StockAdditionDemandUseCase;
+
+import com.arkapro.core.ports.in.StockAdditionConfirmationUseCase;
+import com.arkapro.core.ports.in.StockAdditionDemandUseCase;
 
 @RestController
 @RequestMapping("/apiarkav2/supply")

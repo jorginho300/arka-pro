@@ -3,7 +3,7 @@ package com.arkapro.infrastructure.scheduler;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.arkapro.ports.in.DesertPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.DesertPurchaseOrderUseCase;
 
 @Component
 public class ReservationScheduler {

@@ -1,4 +1,4 @@
-package com.arkapro.ports.repository;
+package com.arkapro.core.ports.repository;
 
 import java.time.LocalDateTime;
 import java.util.List;

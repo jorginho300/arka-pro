@@ -1,11 +1,11 @@
-package com.arkapro.ports.in;
+package com.arkapro.core.ports.in;
 
+import com.arkapro.core.ports.repository.CustomerRepositoryPort;
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
+import com.arkapro.core.ports.repository.PurchaseOrderRepositoryPort;
 import com.arkapro.domain.model.Product;
 import com.arkapro.domain.model.PurchaseOrder;
 import com.arkapro.infrastructure.adapter.in.dto.request.CreatePurchaseOrderCommandRequest;
-import com.arkapro.ports.repository.CustomerRepositoryPort;
-import com.arkapro.ports.repository.ProductRepositoryPort;
-import com.arkapro.ports.repository.PurchaseOrderRepositoryPort;
 
 public class CreatePurchaseOrderUseCase {
 	private final PurchaseOrderRepositoryPort purchaseOrderRepository;

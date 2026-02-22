@@ -1,10 +1,10 @@
-package com.arkapro.ports.in;
+package com.arkapro.core.ports.in;
 
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
+import com.arkapro.core.ports.repository.StockManagementRepositoryPort;
 import com.arkapro.domain.model.Product;
 import com.arkapro.domain.model.StockManagement;
 import com.arkapro.domain.model.StockManagementEnum;
-import com.arkapro.ports.repository.ProductRepositoryPort;
-import com.arkapro.ports.repository.StockManagementRepositoryPort;
 
 public class StockAdditionConfirmationUseCase {
 	private final ProductRepositoryPort productRepository;

@@ -1,13 +1,13 @@
-package com.arkapro.ports.in;
+package com.arkapro.core.ports.in;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
+import com.arkapro.core.ports.repository.PurchaseOrderRepositoryPort;
 import com.arkapro.domain.model.Product;
 import com.arkapro.domain.model.PurchaseOrder;
-import com.arkapro.ports.repository.ProductRepositoryPort;
-import com.arkapro.ports.repository.PurchaseOrderRepositoryPort;
 
 public class DesertPurchaseOrderUseCase {
 	private final PurchaseOrderRepositoryPort orderRepository;

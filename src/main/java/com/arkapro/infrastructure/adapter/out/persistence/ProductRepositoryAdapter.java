@@ -4,11 +4,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
 import com.arkapro.domain.model.Product;
 import com.arkapro.infrastructure.adapter.out.mapper.ProductMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.entity.ProductJpaEntity;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.ProductJpaRepository;
-import com.arkapro.ports.repository.ProductRepositoryPort;
 
 @Component
 public class ProductRepositoryAdapter implements ProductRepositoryPort {

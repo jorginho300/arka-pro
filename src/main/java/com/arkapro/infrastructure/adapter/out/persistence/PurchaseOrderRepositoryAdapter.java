@@ -6,11 +6,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.PurchaseOrderRepositoryPort;
 import com.arkapro.domain.model.PurchaseOrder;
 import com.arkapro.infrastructure.adapter.out.mapper.PurchaseOrderMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.entity.PurchaseOrderJpaEntity;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.PurchaseOrderJpaRepository;
-import com.arkapro.ports.repository.PurchaseOrderRepositoryPort;
 
 @Component
 public class PurchaseOrderRepositoryAdapter implements PurchaseOrderRepositoryPort {

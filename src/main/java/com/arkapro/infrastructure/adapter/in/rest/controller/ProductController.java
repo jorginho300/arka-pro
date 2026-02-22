@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arkapro.core.ports.in.CreateProductUseCase;
 import com.arkapro.domain.model.Product;
 import com.arkapro.infrastructure.adapter.in.dto.request.CreateProductCommandRequest;
-import com.arkapro.ports.in.CreateProductUseCase;
 
 @RestController
 @RequestMapping("/apiarkav2/products")

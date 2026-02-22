@@ -1,10 +1,10 @@
-package com.arkapro.ports.in;
+package com.arkapro.core.ports.in;
 
+import com.arkapro.core.ports.repository.CategoryRepositoryPort;
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
 import com.arkapro.domain.model.Category;
 import com.arkapro.domain.model.Product;
 import com.arkapro.infrastructure.adapter.in.dto.request.CreateProductCommandRequest;
-import com.arkapro.ports.repository.CategoryRepositoryPort;
-import com.arkapro.ports.repository.ProductRepositoryPort;
 
 public class CreateProductUseCase {
 	private final ProductRepositoryPort productRepository;

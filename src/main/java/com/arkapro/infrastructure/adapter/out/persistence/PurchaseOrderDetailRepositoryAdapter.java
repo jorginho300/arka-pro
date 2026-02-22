@@ -2,11 +2,11 @@ package com.arkapro.infrastructure.adapter.out.persistence;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.PurchaseOrderDetailRepositoryPort;
 import com.arkapro.domain.model.PurchaseOrderDetail;
 import com.arkapro.infrastructure.adapter.out.mapper.PurchaseOrderDetailMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.entity.PurchaseOrderDetailJpaEntity;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.PurchaseOrderDetailJpaRepository;
-import com.arkapro.ports.repository.PurchaseOrderDetailRepositoryPort;
 
 @Component
 public class PurchaseOrderDetailRepositoryAdapter implements PurchaseOrderDetailRepositoryPort {

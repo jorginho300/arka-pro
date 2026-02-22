@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.CategoryRepositoryPort;
 import com.arkapro.domain.model.Category;
 import com.arkapro.infrastructure.adapter.out.mapper.CategoryMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.CategoryJpaRepository;
-import com.arkapro.ports.repository.CategoryRepositoryPort;
 
 @Component
 public class CategoryRepositoryAdapter implements CategoryRepositoryPort {

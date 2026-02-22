@@ -3,10 +3,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.CustomerRepositoryPort;
 import com.arkapro.domain.model.Customer;
 import com.arkapro.infrastructure.adapter.out.mapper.CustomerMapper;
 import com.arkapro.infrastructure.adapter.out.persistence.repository.CustomerJpaRepository;
-import com.arkapro.ports.repository.CustomerRepositoryPort;
 
 @Component
 public class CustomerRepositoryAdapter implements CustomerRepositoryPort {

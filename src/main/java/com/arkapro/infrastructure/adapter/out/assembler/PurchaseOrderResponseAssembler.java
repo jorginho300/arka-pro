@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.arkapro.core.ports.repository.CustomerRepositoryPort;
+import com.arkapro.core.ports.repository.ProductRepositoryPort;
 import com.arkapro.domain.model.Customer;
 import com.arkapro.domain.model.Product;
 import com.arkapro.domain.model.PurchaseOrder;
 import com.arkapro.infrastructure.adapter.in.dto.response.PurchaseOrderDetailResponse;
 import com.arkapro.infrastructure.adapter.in.dto.response.PurchaseOrderResponse;
-import com.arkapro.ports.repository.CustomerRepositoryPort;
-import com.arkapro.ports.repository.ProductRepositoryPort;
 
 @Component
 public class PurchaseOrderResponseAssembler {
