@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.arkapro.core.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.core.ports.in.StockAdditionDemandUseCase;
+import com.arkapro.core.ports.in.StockAdditionRejectionUseCase;
 
 @RestController
 @RequestMapping("/apiarkav2/supply")
@@ -17,10 +18,15 @@ public class StockManagementController {
 	
 	private final StockAdditionConfirmationUseCase additionConfirmationUC;
 	private final StockAdditionDemandUseCase additionDemandUC;
+	private final StockAdditionRejectionUseCase additionRejectionUC;
 	
-	public StockManagementController(StockAdditionConfirmationUseCase additionConfirmationUC, StockAdditionDemandUseCase additionDemandUC) {
+	public StockManagementController
+	(StockAdditionConfirmationUseCase additionConfirmationUC, 
+			StockAdditionDemandUseCase additionDemandUC,
+			StockAdditionRejectionUseCase additionRejectionUC) {
 		this.additionConfirmationUC = additionConfirmationUC;
 		this.additionDemandUC = additionDemandUC;
+		this.additionRejectionUC = additionRejectionUC;
 	}
 	
 	@PostMapping("/{productId}/")
@@ -33,6 +39,12 @@ public class StockManagementController {
 	public ResponseEntity<?> confirm(@PathVariable Long stockManagementId) {
 		additionConfirmationUC.execute(stockManagementId);
 		return ResponseEntity.ok("Confirmed");
+	}
+	
+	@PatchMapping("/{stockManagementId}/reject")
+	public ResponseEntity<?> reject(@PathVariable Long stockManagementId) {
+		additionRejectionUC.execute(stockManagementId);
+		return ResponseEntity.ok("Rejected");
 	}
 
 }

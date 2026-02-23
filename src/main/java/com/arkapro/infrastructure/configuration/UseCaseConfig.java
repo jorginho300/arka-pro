@@ -16,6 +16,7 @@ import com.arkapro.core.ports.in.GenerateTopSalesReportUseCase;
 import com.arkapro.core.ports.in.RemoveItemsPurchaseOrderUseCase;
 import com.arkapro.core.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.core.ports.in.StockAdditionDemandUseCase;
+import com.arkapro.core.ports.in.StockAdditionRejectionUseCase;
 import com.arkapro.core.ports.query.ReportQueryPort;
 import com.arkapro.core.ports.repository.CategoryRepositoryPort;
 import com.arkapro.core.ports.repository.CustomerRepositoryPort;
@@ -40,6 +41,11 @@ public class UseCaseConfig {
 	@Bean
 	public StockAdditionDemandUseCase stockDemandUseCase(StockManagementRepositoryPort stockRepository) {
 		return new StockAdditionDemandUseCase(stockRepository);
+	}
+	
+	@Bean
+	public StockAdditionRejectionUseCase stockAdditionRejectionUseCase(StockManagementRepositoryPort stockRepository) {
+		return new StockAdditionRejectionUseCase(stockRepository);
 	}
 	
 	@Bean

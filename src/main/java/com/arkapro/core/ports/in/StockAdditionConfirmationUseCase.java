@@ -21,10 +21,13 @@ public class StockAdditionConfirmationUseCase {
 		
 		Product product = productRepository.findById(sm.getProductId())
 				.orElseThrow(() -> new RuntimeException("Product not found"));
-		
-		sm.setStatus(StockManagementEnum.APPROVED);
-		product.increaseStock(sm.getQuantity());
-		productRepository.save(product);
-		stockRepository.save(sm);
+		if(sm.getStatus() != StockManagementEnum.PENDING) {
+			throw new IllegalStateException("Only requests in pending status can be approved");
+		} else {
+			sm.setStatus(StockManagementEnum.APPROVED);
+			product.increaseStock(sm.getQuantity());
+			productRepository.save(product);
+			stockRepository.save(sm);
+		}
 	}
 }

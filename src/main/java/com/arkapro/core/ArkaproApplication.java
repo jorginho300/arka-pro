@@ -1,4 +1,4 @@
-package com.arkapro;
+package com.arkapro.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

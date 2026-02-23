@@ -61,19 +61,20 @@ public class ReportQueryAdapter implements ReportQueryPort {
 	public List<FrequentCustomerReportDTO> findFrequentCustomers() {
 		// TODO Auto-generated method stub
 		String jpql = """
-				SELECT new com.arkapro.infrastructure.adapter.in.dto.report.FrequentCustomerReportDTO(
-				o.customer.id,
-				o.customer.name,
-				COUNT(o.id),
-				SUM((SELECT
-				 		SUM(d.quantity * d.unitPrice)
+					SELECT 
+					new com.arkapro.infrastructure.adapter.in.dto.report.FrequentCustomerReportDTO(
+						o.customer.id,
+						o.customer.name,
+						COUNT(o.id),
+						SUM((SELECT
+				 				SUM(d.quantity * d.unitPrice)
 				 		FROM PurchaseOrderDetailJpaEntity d
 				 		WHERE d.purchaseOrder.id = o.id)
 				 		))
-				FROM PurchaseOrderJpaEntity o
-				WHERE o.status = 'CONFIRMED'
-				GROUP BY o.customer.id, o.customer.name
-				ORDER BY COUNT(o.id) DESC
+					FROM PurchaseOrderJpaEntity o
+					WHERE o.status = 'CONFIRMED'
+					GROUP BY o.customer.id, o.customer.name
+					ORDER BY COUNT(o.id) DESC
 				""";
 		
 		return em.createQuery(jpql, FrequentCustomerReportDTO.class).setMaxResults(5).getResultList();
@@ -83,15 +84,16 @@ public class ReportQueryAdapter implements ReportQueryPort {
 	public List<DesertedCartReportDTO> findDesertedCarts() {
 		// TODO Auto-generated method stub
 		String jpql = """
-				SELECT new com.arkapro.infrastructure.adapter.in.dto.report.DesertedCartReportDTO(
-				o.id,
-				o.customer.name,
-				o.createdAt,
-				(
-					SELECT SUM(d.quantity * d.unitPrice)
-					FROM PurchaseOrderDetailJpaEntity d
-					WHERE d.purchaseOrder.id = o.id
-				))
+				SELECT 
+				new com.arkapro.infrastructure.adapter.in.dto.report.DesertedCartReportDTO(
+					o.id,
+					o.customer.name,
+					o.createdAt,
+						(
+							SELECT SUM(d.quantity * d.unitPrice)
+							FROM PurchaseOrderDetailJpaEntity d
+							WHERE d.purchaseOrder.id = o.id
+						))
 				FROM PurchaseOrderJpaEntity o
 				WHERE o.status = 'DESERTED'
 				ORDER BY o.createdAt DESC
@@ -104,12 +106,13 @@ public class ReportQueryAdapter implements ReportQueryPort {
 	public List<DesertedCartDetailReportDTO> findDesertedCartDetail(Long orderId) {
 		// TODO Auto-generated method stub
 		String jpql = """
-				SELECT new com.arkapro.infrastructure.adapter.in.dto.report.DesertedCartDetailReportDTO(
-				d.product.id,
-				d.product.name,
-				d.quantity,
-				d.unitPrice,
-				(d.quantity * d.unitPrice))
+				SELECT
+				new com.arkapro.infrastructure.adapter.in.dto.report.DesertedCartDetailReportDTO(
+					d.product.id,
+					d.product.name,
+					d.quantity,
+					d.unitPrice,
+					(d.quantity * d.unitPrice))
 				FROM PurchaseOrderDetailJpaEntity d
 				WHERE d.purchaseOrder.id = :orderId
 				""";
