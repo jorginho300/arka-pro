@@ -8,7 +8,11 @@ import com.arkapro.core.ports.in.ConfirmPurchaseOrderUseCase;
 import com.arkapro.core.ports.in.CreateProductUseCase;
 import com.arkapro.core.ports.in.CreatePurchaseOrderUseCase;
 import com.arkapro.core.ports.in.DesertPurchaseOrderUseCase;
+import com.arkapro.core.ports.in.GenerateDesertedCartsDetailReportUseCase;
+import com.arkapro.core.ports.in.GenerateDesertedCartsReportUseCase;
+import com.arkapro.core.ports.in.GenerateFrequentCustomersReportUseCase;
 import com.arkapro.core.ports.in.GenerateLowStockReportUseCase;
+import com.arkapro.core.ports.in.GenerateTopSalesReportUseCase;
 import com.arkapro.core.ports.in.RemoveItemsPurchaseOrderUseCase;
 import com.arkapro.core.ports.in.StockAdditionConfirmationUseCase;
 import com.arkapro.core.ports.in.StockAdditionDemandUseCase;
@@ -73,6 +77,26 @@ public class UseCaseConfig {
 	@Bean
 	public GenerateLowStockReportUseCase generateLowStockReportUseCase(ReportQueryPort reportQuery) {
 		return new GenerateLowStockReportUseCase(reportQuery);
+	}
+	
+	@Bean
+	public GenerateTopSalesReportUseCase generateTopSalesReportUseCase(ReportQueryPort reportQuery) {
+		return new GenerateTopSalesReportUseCase(reportQuery);
+	}
+	
+	@Bean
+	public GenerateFrequentCustomersReportUseCase generateFrequentCustomersReportUseCase(ReportQueryPort reportQuery) {
+		return new GenerateFrequentCustomersReportUseCase(reportQuery);
+	}
+	
+	@Bean
+	public GenerateDesertedCartsReportUseCase generateDesertedCartsReportUseCase(ReportQueryPort reportQuery) {
+		return new GenerateDesertedCartsReportUseCase(reportQuery);
+	}
+	
+	@Bean
+	public GenerateDesertedCartsDetailReportUseCase generateDesertedCartsDetailReportUseCase(ReportQueryPort reportQuery) {
+		return new GenerateDesertedCartsDetailReportUseCase(reportQuery);
 	}
 
 }
